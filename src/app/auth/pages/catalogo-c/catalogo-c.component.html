@@ -1,0 +1,63 @@
+<div class="row">
+    <div class=" col-3">
+        <p-image src="./assets/logo-itsmarts.png" alt="Image" width="150"></p-image>
+    </div>
+    <div class=" col-9">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText pInputText class="p-inputtext-sm inputBuscar" placeholder="Buscar cliente">         
+        </span> <br><br> <br>      
+    </div>
+    <div class="col-8">
+        <div class="text-layout">
+            <button pButton type="button" class="p-button-sm" routerLink="/auth/detalleCliente" ><i class="pi pi-pencil"></i>&nbsp;Nuevo registro</button>
+        </div>
+        <br>
+        <p-toolbar>
+            <div class="p-toolbar-group-left">
+                <span><b>Información de los clientes</b></span>
+            </div>
+            <div class="p-toolbar-group-right">
+                <button pButton type="button" class="p-button-sm p-button-danger" (click)="imprimirLista()"><i class="pi pi-file-pdf"></i>&nbsp;Exportar a PDF</button>&nbsp;
+                <button pButton type="button" class="p-button-sm p-button-success"><i class="pi pi-file-excel"></i>&nbsp;Exportar a Excel</button>
+            </div>
+        </p-toolbar>
+        <div class="gid" id="datosTabla"  >
+            <div class="p-col mt-2">
+                <table class="table table-hover" >
+                    <thead>
+                        <tr >
+                            <th >Cliente</th>
+                            <th >Nombre </th>
+                            <th >Teléfono </th>
+                            <th >Correo </th>
+                            <th >Municipio </th>
+                            <th>Código Postal </th>
+                            <th >Acciones </th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let item of clientesDatos.clientes; " >
+                            <td *ngIf="item.estatus!>=1">{{item.id}}</td>
+                            <td *ngIf="item.estatus!>=1">{{item.nombre}} {{item.apellidoP}} {{item.apellidoM}}</td>
+                            <td *ngIf="item.estatus!>=1">{{item.telefono}}</td>
+                            <td *ngIf="item.estatus!>=1">itsmarts@gmail.com</td>
+                            <td *ngIf="item.estatus!>=1">{{item.fkEstado}}</td>
+                            <td *ngIf="item.estatus!>=1">{{item.codigoPostal}}</td>
+                            <td *ngIf="item.estatus!>=1">
+                                <button pButton  pRipple type="button" icon="pi pi-search" class="p-button-rounded p-button-success p-button-outlined "  style='width:25px; height:25px' ></button>
+                                <button pButton [routerLink]="['/auth/editarCliente',item.id]" pRipple type="button" icon="pi pi-bell" class="p-button-rounded p-button-warning p-button-outlined" style='width:25px; height:25px' ></button>
+                                <button pButton (click)="borrarCliente(item)" pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined" style='width:25px; height:25px' ></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="mapa" #mapa>
+        </div>
+    </div>
+
+</div>

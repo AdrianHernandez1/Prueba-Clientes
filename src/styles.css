@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+/* html, body{
+    margin: 10px;
+    background-color: #D5E6F0;
+    --font-family: var(--font-family);
+}
+
+.text-layout{
+    color: var(--text-color);
+} */
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
