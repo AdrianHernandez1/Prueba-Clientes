@@ -10,7 +10,7 @@
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Nombre</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.nombre" required>
+                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.nombre" >
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b></label>
@@ -57,16 +57,16 @@
                 <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.codigoPostal">
             </div>
             <div class="col-6">
-                <!-- <label  class="form-label" style="color:#0715BA"><b>Estado</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.fkEstado"> -->
+                <label  class="form-label" style="color:#0715BA"><b>Estado</b></label>
                 <select name="miselect"   [(ngModel)]="clientes.fkEstado" class="form-control" style="background: #F4F6F6;" >
+                    <option>Selecciona un estado</option>
                     <option *ngFor="let item of estadosDatos.estados" [value]="item.id">{{item.nombreEstado}}</option>
                 </select>
             </div>
             <div class="col-6">
-                <!-- <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.fkMunicipio"> -->
+             <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
                 <select name="miselect"   [(ngModel)]="clientes.fkMunicipio" class="form-control" style="background: #F4F6F6;" >
+                    <option>Selecciona un municipio</option>
                     <option *ngFor="let item of municipiosDatos.municipios; " 
                     [hidden]='!(clientes.fkEstado == item.fkEstado)' value=" {{item.id}}">{{item.nombreMunicipio}}</option>
                 </select>
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div class="col-12 text-center my-5">
-        <button pButton pRipple type="submit" (click)="registro()" class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;{{(clientes.id)?'Actualizar ': 'Crear'}}</button>
+        <button pButton pRipple type="submit" (click)="registro()" class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;Aceptar</button>
     </div>
 </div>
 

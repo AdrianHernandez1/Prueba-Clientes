@@ -102,7 +102,15 @@ export class AuthService {
     return this.http.get<InterfazMunicipios>(url);
   }
   
-  
+  // getAllMunicipios(id:any):Observable<InterfazMunicipios>{
+  //   const url=`${ this.baseUrl }/api/municipios/byEstado/${id}`
+  //   return this.http.get<InterfazMunicipios>(url);
+  // }
+  //Buscar Cliente
+  buscarCliente(termino:string):Observable<Cliente[]>{
+    const url=`${ this.baseUrl }/api/clientes/search/nombre?query=${termino}`;
+    return this.http.get<Cliente[]>(url);
+}
 }
 
 // registro( nombre:       string,
