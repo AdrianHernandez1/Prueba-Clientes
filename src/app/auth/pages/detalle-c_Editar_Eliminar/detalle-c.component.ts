@@ -71,6 +71,7 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
       //Actualizar 
       this.authService.actualizarCliente(this.clientes)
         .subscribe(cliente => {
+          this.router.navigate(["/auth/catalogoCliente"]);
           Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -78,10 +79,15 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
                         showConfirmButton: false,
                         timer: 1500
                       })
-                      this.router.navigate(["/auth/catalogoCliente"]);
-        })
+                      
+        },(error)=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Verifica que tus campos cumplan no esten vacios y cumplan con el ejemplo solicitado'
+          })
+        });
     } 
-    
   }
 
   getAllEstados(){
@@ -108,7 +114,5 @@ this.authService.getAllEstados()
       timer: 1500
     });
   }
-
-
 
 }

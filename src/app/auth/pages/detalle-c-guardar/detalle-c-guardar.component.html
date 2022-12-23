@@ -13,15 +13,15 @@
             <input  type="text" hidden class="form-control" style="background: #F4F6F6;"  formControlName="id"  readonly>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Nombre</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="nombre">
+                <input  type="text" class="form-control"  formControlName="nombre"  placeholder="Ej:Luis Adrián">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="apellidoP">
+                <input  type="text" class="form-control"  formControlName="apellidoP"  placeholder="Ej:Hernández">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Apellido Materno</b></label>
-                <input  type="text" class="form-control" formControlName="apellidoM">
+                <input  type="text" class="form-control" formControlName="apellidoM" value=" " placeholder="Ej:Sanchez">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>RFC</b><span class="text-danger">*</span></label>
@@ -29,11 +29,12 @@
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" formControlName="nombreFiscal">
+                <input  type="text" class="form-control" formControlName="nombreFiscal"  placeholder="Ej:Nombre Fiscal">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger" >*</span></label>
-                <input  type="text" class="form-control" formControlName="telefono" placeholder="Ej:4771234567">
+                <input  ondrop="return false;" onpaste="return false;"
+                onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" class="form-control" formControlName="telefono" placeholder="Ej:4771234567">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
@@ -41,47 +42,47 @@
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Puesto</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="puesto">
+                <input  type="text" class="form-control"  formControlName="puesto"  placeholder="Ej:Vendedor">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Sucursal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="sucursal">
+                <input  type="text" class="form-control"  formControlName="sucursal"  placeholder="Ej:Sucursal León">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="colonia">
+                <input  type="text" class="form-control"  formControlName="colonia"  placeholder="Ej:Centro">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   formControlName="calle" placeholder="Ej: Av. Asis #507">
+                <input  type="text" class="form-control"   formControlName="calle" placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="codigoPostal">
+                <input  type="text" class="form-control"  formControlName="codigoPostal"  placeholder="Ej:37200">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
-                <select name="miselect"  [(ngModel)]="datoEstado"  class="form-control"formControlName="fkEstado">
+                <select name="miselect"  [(ngModel)]="datoEstado"  class="form-control"formControlName="fkEstado" placeholder="Selecciona un estado">
                     <option>Selecciona un estado</option>
                     <option *ngFor="let itemEstado of estadosDatos.estados" [value]="itemEstado.id">{{itemEstado.nombreEstado}} </option>
                 </select>
             </div>
             <div class="col-6">
              <label  class="form-label" style="color:#0715BA"><b>Municipio</b><span class="text-danger">*</span></label>
-             <select  name="miselect"   class="form-control"  formControlName="fkMunicipio">
+             <select  name="miselect"   class="form-control"  formControlName="fkMunicipio" placeholder="Selecciona un municipio">
                 <option>Selecciona un municipio</option>
                 <option *ngFor="let itemMunicipio of municipiosDatos.municipios" [hidden]='!(datoEstado == itemMunicipio.fkEstado)' [value]="itemMunicipio.id">{{itemMunicipio.nombreMunicipio}}</option>
             </select>
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  formControlName="fechaCreacion"  readonly>
+                <input  type="text" class="form-control"  formControlName="fechaCreacion"    placeholder="Ej:23/12/2022" value="23/12/2022" readonly style="background: #F4F6F6;">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Referencia</b><span class="text-danger">*</span></label>
                 <span class="p-input-icon-right">
                     <i class="pi pi-search"></i>
-                    <input  type="text" class="form-control"  style="width: 285px;" formControlName="referencia" style="width: 330px;" placeholder="Ej: Se encuentra entre calle X y Y">     
+                    <input  type="text" class="form-control"  style="width: 285px;" formControlName="referencia" style="width: 290px;" placeholder="Ej: Se encuentra entre calle X y Y">     
                 </span>
             </div>
         </div>
