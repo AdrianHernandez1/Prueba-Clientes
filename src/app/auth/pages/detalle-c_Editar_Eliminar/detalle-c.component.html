@@ -1,88 +1,86 @@
 <div class="row">
+    <div class="col-12 text-center alert alert-info">
+        <p-image src="./assets/logo-itsmarts.png" alt="Image" width="150"></p-image>
+    </div>
      <div class="col-6">
         <h5><b>INFORMACIÓN DEL CLIENTE</b></h5>
         <hr><br>
         <div class="row">
+            <input  type="text" hidden class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.id" readonly>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>ID Cliente</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.id">
+                <label  class="form-label" style="color:#0715BA"><b>Nombre</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" [(ngModel)]="clientes.nombre" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.nombre" >
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.apellidoP">
+                <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  [(ngModel)]="clientes.apellidoP" required>
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Apellido Materno</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.apellidoM">
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.apellidoM">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>RFC</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.rfc">
+                <label  class="form-label" style="color:#0715BA"><b>RFC</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.rfc" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.nombreFiscal">
+                <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.nombreFiscal" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Teléfono</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.telefono">
+                <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.telefono" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Correo</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" required >
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Puesto</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.puesto">
+                <label  class="form-label" style="color:#0715BA"><b>Puesto</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.puesto" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Sucursal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.sucursal">
+                <label  class="form-label" style="color:#0715BA"><b>Sucursal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.sucursal" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Colonia</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.colonia">
+                <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.colonia" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Calle</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.codigoPostal">
+                <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.codigoPostal" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Estado</b></label>
-                <select name="miselect"   [(ngModel)]="clientes.fkEstado" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
+                <select name="miselect"   [(ngModel)]="clientes.fkEstado" class="form-control" required >
                     <option>Selecciona un estado</option>
                     <option *ngFor="let item of estadosDatos.estados" [value]="item.id">{{item.nombreEstado}}</option>
                 </select>
             </div>
             <div class="col-6">
-             <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
-             <select name="miselect"   [(ngModel)]="clientes.fkMunicipio" class="form-control" style="background: #F4F6F6;" >
+             <label  class="form-label" style="color:#0715BA"><b>Municipio</b><span class="text-danger">*</span></label>
+             <select name="miselect"   [(ngModel)]="clientes.fkMunicipio" class="form-control" required >
                 <option>Selecciona un estado</option>
                 <option *ngFor="let item of municipiosDatos.municipios" [hidden]='!(clientes.fkEstado == item.fkEstado)' [value]="item.id">{{item.nombreMunicipio}}</option>
             </select>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" style="background: #F4F6F6;"  >
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Referencia</b></label>
+                <label  class="form-label" style="color:#0715BA"><b>Referencia</b><span class="text-danger">*</span></label>
                 <span class="p-input-icon-right">
                     <i class="pi pi-search"></i>
-                    <input  type="text" class="form-control" style="background: #F4F6F6;" style="width: 285px;" [(ngModel)]="clientes.referencia">     
+                    <input  type="text" class="form-control"  style="width: 285px;" [(ngModel)]="clientes.referencia" required>     
                 </span>
             </div>
-            <div class="col-6 text-center my-4">
-                <button pButton pRipple type="button" label="Buscar" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;"></button>
-            </div>
+            
         </div>
     </div>
     <div class="col-6">
@@ -97,17 +95,20 @@
                 <label  class="form-label" style="color:#0715BA"><b>Cordenadas</b></label>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.latitud">
+                <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" [(ngModel)]="clientes.latitud" required>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  [(ngModel)]="clientes.longitud">
+                <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.longitud" required>
+            </div>
+            <div class="col-12 text-center my-4">
+                <button pButton pRipple (click)="Buscar()" type="button" label="Buscar" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;width:300px; height:50px" ></button>
             </div>
         </div>
     </div>
     <div class="col-12 text-center my-5">
-        <button pButton pRipple type="submit" (click)="registro()" class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;Aceptar</button>
+        <button pButton pRipple type="submit" (click)="registro()"  class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;Aceptar</button>
     </div>
 </div>  
  

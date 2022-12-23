@@ -3,89 +3,86 @@
 [formGroup]="miFormulario"
         (ngSubmit)="registro()">
 <div class="row">
+    <div class="col-12 text-center alert alert-info">
+        <p-image src="./assets/logo-itsmarts.png" alt="Image" width="150"></p-image>
+    </div>
      <div class="col-6">
         <h5><b>INFORMACIÓN DEL CLIENTE</b></h5>
         <hr><br>
         <div class="row">
+            <input  type="text" hidden class="form-control" style="background: #F4F6F6;"  formControlName="id"  readonly>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>ID Cliente</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;"  formControlName="id">
+                <label  class="form-label" style="color:#0715BA"><b>Nombre</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="nombre">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="nombre">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="apellidoP">
+                <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="apellidoP">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Apellido Materno</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="apellidoM">
+                <input  type="text" class="form-control" formControlName="apellidoM">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>RFC</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="rfc">
+                <label  class="form-label" style="color:#0715BA"><b>RFC</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="rfc"  placeholder="Ej:123RFC123">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="nombreFiscal">
+                <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" formControlName="nombreFiscal">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Teléfono</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="telefono">
+                <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger" >*</span></label>
+                <input  type="text" class="form-control" formControlName="telefono" placeholder="Ej:4771234567">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Correo</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" formControlName="email" placeholder="Ej:hernandez@gmail.com">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Puesto</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="puesto">
+                <label  class="form-label" style="color:#0715BA"><b>Puesto</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="puesto">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Sucursal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="sucursal">
+                <label  class="form-label" style="color:#0715BA"><b>Sucursal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="sucursal">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Colonia</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="colonia">
+                <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="colonia">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Calle</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"   formControlName="calle" placeholder="Ej: Av. Asis #507">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="codigoPostal">
+                <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="codigoPostal">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Estado</b></label>
-                <select name="miselect"  [(ngModel)]="datoEstado"  class="form-control" style="background: #F4F6F6;" formControlName="fkEstado">
+                <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
+                <select name="miselect"  [(ngModel)]="datoEstado"  class="form-control"formControlName="fkEstado">
                     <option>Selecciona un estado</option>
                     <option *ngFor="let itemEstado of estadosDatos.estados" [value]="itemEstado.id">{{itemEstado.nombreEstado}} </option>
                 </select>
             </div>
             <div class="col-6">
-             <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
-             <select  name="miselect"   class="form-control" style="background: #F4F6F6;" formControlName="fkMunicipio">
+             <label  class="form-label" style="color:#0715BA"><b>Municipio</b><span class="text-danger">*</span></label>
+             <select  name="miselect"   class="form-control"  formControlName="fkMunicipio">
                 <option>Selecciona un municipio</option>
                 <option *ngFor="let itemMunicipio of municipiosDatos.municipios" [hidden]='!(datoEstado == itemMunicipio.fkEstado)' [value]="itemMunicipio.id">{{itemMunicipio.nombreMunicipio}}</option>
             </select>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" >
+                <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control" style="background: #F4F6F6;"  formControlName="fechaCreacion"  readonly>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Referencia</b></label>
+                <label  class="form-label" style="color:#0715BA"><b>Referencia</b><span class="text-danger">*</span></label>
                 <span class="p-input-icon-right">
                     <i class="pi pi-search"></i>
-                    <input  type="text" class="form-control" style="background: #F4F6F6;" style="width: 285px;" formControlName="referencia">     
+                    <input  type="text" class="form-control"  style="width: 285px;" formControlName="referencia" style="width: 330px;" placeholder="Ej: Se encuentra entre calle X y Y">     
                 </span>
-            </div>
-            <div class="col-6 text-center my-4">
-                <button pButton pRipple type="button" label="Buscar" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;"></button>
             </div>
         </div>
     </div>
@@ -101,17 +98,20 @@
                 <label  class="form-label" style="color:#0715BA"><b>Cordenadas</b></label>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="latitud">
+                <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="latitud" placeholder="Ej:-101.68337786078459">
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="longitud">
+                <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  formControlName="longitud" placeholder="Ej:21.1213454578527">
+            </div>
+            <div class="col-12 text-center my-4">
+                <button pButton pRipple type="button" label="Buscar" (click)="Buscar()" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;" style='width:300px; height:50px'></button>
             </div>
         </div>
     </div>
     <div class="col-12 text-center my-5">
-        <button pButton pRipple type="submit" label="Aceptar" class="p-button-success"  style='width:300px; height:50px'></button>
+        <button pButton pRipple type="submit" label="Aceptar" [disabled]="miFormulario.invalid" class="p-button-success"  style='width:300px; height:50px'></button>
     </div>
 </div>
 </form>  

@@ -22,9 +22,10 @@ import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
   ]
 })
 export class DetalleCGuardarComponent implements AfterViewInit, OnInit{
-  @Input() lngLat: [number, number] = [-101.60257306554463, 21.09640385894646];
+  @Input() lngLat: [number, number] = [-101.68337786078459,21.1213454578527];;
   @ViewChild('mapa') divMapa!: ElementRef;
   datoEstado:number=0;
+
 
   ngOnInit():void {
     this.getAllEstados();
@@ -44,31 +45,28 @@ export class DetalleCGuardarComponent implements AfterViewInit, OnInit{
       .addTo(mapa);
   }
   
-
-
-
   constructor(private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute) { }
 
 miFormulario: FormGroup = this.fb.group({
-    nombre:     [, [ Validators.required ]],
-    apellidoP:    [, [ Validators.required]],
-    apellidoM: [, [ Validators.required ]],
-    rfc:     [, [ Validators.required ]],
-    nombreFiscal:    [, [ Validators.required]],
-    telefono: [, [ Validators.required ]],
-    puesto:     [, [ Validators.required ]],
-    sucursal:    [, [ Validators.required]],
-    colonia: [, [ Validators.required ]],
-    codigoPostal:     [, [ Validators.required ]],
-    email:    [, [ Validators.required]],
-    fkEstado: [, [ Validators.required ]],
-    fkMunicipio:     [, [ Validators.required ]],
-    referencia:    [, [ Validators.required]],
-    latitud: [, [ Validators.required ]],
-    longitud:     [, [ Validators.required ]]
+    nombre:     [, [ Validators.required , Validators.maxLength(50) ]],
+    apellidoP:    [, [ Validators.required, Validators.maxLength(50)]],
+    apellidoM: [, [Validators.maxLength(50)]],
+    rfc:     [, [ Validators.required , Validators.maxLength(13) ]],
+    nombreFiscal:    [, [ Validators.required, Validators.maxLength(50)]],
+    telefono: [, [ Validators.required, Validators.maxLength(10) ]],
+    puesto:     [, [ Validators.required, Validators.maxLength(50) ]],
+    sucursal:    [, [ Validators.required, Validators.maxLength(50)]],
+    colonia: [, [ Validators.required, Validators.maxLength(50) ]],
+    codigoPostal:     [, [ Validators.required, Validators.maxLength(5) ]],
+    email:    [, [ Validators.required, Validators.email, Validators.maxLength(60)]],
+    fkEstado: [, [ Validators.required , Validators.maxLength(5)]],
+    fkMunicipio:     [, [ Validators.required , Validators.maxLength(5)]],
+    referencia:    [, [ Validators.required, Validators.maxLength(100)]],
+    latitud: [, [ Validators.required, Validators.maxLength(20) ]],
+    longitud:     [, [ Validators.required, Validators.maxLength(20)  ]]
   });
 
   registro() {
@@ -137,6 +135,15 @@ miFormulario: FormGroup = this.fb.group({
       .subscribe(municipio=>{
         this.municipiosDatos=municipio;
       })
+    }
+
+    Buscar(){
+      Swal.fire({
+        icon: 'info',
+        title: 'Esta función no se encuentra activa',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   
 

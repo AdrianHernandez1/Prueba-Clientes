@@ -3,7 +3,6 @@ import {  Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { AuthService } from '../../services/auth.service';
 import { InterfazCliente, Cliente } from '../../interfaces/interfaces';
-// import * as jsPDF from 'jspdf';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import *as XLSX from 'xlsx';
@@ -29,12 +28,12 @@ import *as XLSX from 'xlsx';
   ]
 })
 export class CatalogoCComponent implements AfterViewInit, OnInit {
-  @Input() lngLat: [number, number]= [-101.60257306554463, 21.09640385894646];;
+  @Input() lngLat: [number, number]= [-101.68337786078459,21.1213454578527];
   @ViewChild('mapa') divMapa!: ElementRef;
   @ViewChild('datoTabla',{static:false})el!:ElementRef ;
   clientesDatos!:InterfazCliente;
   hayError:boolean=false;
-  excel='ExcelSheet.xlsx';
+  excel='DatosClientes.xlsx';
   termino:String="";
   dato:string="";
   clientes!:Cliente[];
@@ -87,7 +86,7 @@ borrarCliente(cliente:Cliente){
     if (result.isConfirmed) {
       this.authService.borrarCliente(cliente )
     .subscribe( resp => {
-      this.getAllClientes();
+      this.ngOnInit();
     });
       Swal.fire(
         'Eliminado!',
@@ -95,8 +94,8 @@ borrarCliente(cliente:Cliente){
         'success'
       )
     }
-   
-  })  
+  }
+  )  
 }
 
 buscar(){
@@ -105,13 +104,16 @@ buscar(){
   this.authService.buscarCliente(this.dato)
   .subscribe((clientes)=>{
     this.clientes=clientes;
+  },(err)=>{
+    this.hayError=true;
+    this.clientes=[];
   })
 
 }
 
 
 imprimirLista(){
-  let pdf=new jsPDF('p', 'mm', [900, 1000]);
+  let pdf=new jsPDF('p', 'mm', [720, 1000]);
   pdf.html(this.el.nativeElement,{
     callback:(pdf)=>{
       pdf.save('Tabla de clientes');
@@ -127,15 +129,15 @@ exportarExcel():void{
   XLSX.writeFile(wb,this.excel);
 }
 
+Buscar(){
+  Swal.fire({
+    icon: 'info',
+    title: 'Esta función no se encuentra activa',
+    showConfirmButton: false,
+    timer: 1500
+  });
 }
 
-  // ngOnInit(): void {
-  //   this.activatedRoute.params
-  //   .pipe(
-  //     switchMap(()=>this.authService.getAll()), 
-  //     tap(console.log)
-      
-  //   ).subscribe(data => this.clientes=data[0]);
-  //     }
-  //   }
+}
+
 

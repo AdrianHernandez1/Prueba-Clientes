@@ -14,8 +14,7 @@ import { DetalleCGuardarComponent } from './pages/detalle-c-guardar/detalle-c-gu
   declarations: [
     DetalleCComponent,
     CatalogoCComponent,
-    DetalleCGuardarComponent
-  ],
+    DetalleCGuardarComponent  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -23,8 +22,8 @@ import { DetalleCGuardarComponent } from './pages/detalle-c-guardar/detalle-c-gu
     PrimeNgModule,
     HttpClientModule,
     FormsModule,
-    NgFor 
-  
+    NgFor
+
   ],
   exports:[
     DetalleCComponent,

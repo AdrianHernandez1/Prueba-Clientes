@@ -9,11 +9,11 @@
             <input type="text" pInputText pInputText class="p-inputtext-sm inputBuscar" [(ngModel)]="dato" (input)="buscar()"
                 placeholder="Buscar cliente">
         </span> <br><br> <br>
-        <div *ngIf="hayError" class="alert alert-danger">
-            No se encontro nada con el termino {{termino}}
-        </div>
     </div>
     <div class="col-8">
+        <div class="alert alert-danger" value="" *ngIf="clientes.length===0 && dato.length>0">
+            No se encontro nada con el termino {{dato}}
+        </div>
         <div class="text-layout">
             <button pButton type="button" class="p-button-sm" routerLink="/detalleClienteGuardar" ><i
                     class="pi pi-pencil"></i>&nbsp;Nuevo registro</button>
@@ -30,7 +30,7 @@
                         class="pi pi-file-excel"></i>&nbsp;Exportar a Excel</button>
             </div>
         </p-toolbar>
-        <div class="gid"  >
+        <div class="gid" *ngIf="clientes.length>0">
             <div class="p-col mt-2" #datoTabla id="datoTabla">
                 <table class="table table-hover">
                     <thead>
@@ -39,21 +39,19 @@
                             <th>Nombre </th>
                             <th>Teléfono </th>
                             <th>Correo </th>
-                            <th>Municipio </th>
-                            <th>Código Postal </th>
+                            <th>Puesto </th>
                             <th>Acciones </th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr *ngFor="let item of clientes ">
-                            <td *ngIf="item.estatus!>=1">{{item.id}}</td>
-                            <td *ngIf="item.estatus!>=1">{{item.nombre}} {{item.apellidoP}} {{item.apellidoM}}</td>
-                            <td *ngIf="item.estatus!>=1">{{item.telefono}}</td>
-                            <td *ngIf="item.estatus!>=1">itsmarts@gmail.com</td>
-                            <td *ngIf="item.estatus!>=1">{{item.fkEstado}}</td>
-                            <td *ngIf="item.estatus!>=1">{{item.codigoPostal}}</td>
-                            <td *ngIf="item.estatus!>=1">
-                                <button pButton pRipple type="button" icon="pi pi-search" 
+                    <tbody>
+                        <tr *ngFor="let item of clientes; let i=index">
+                            <td >{{i+1}}</td>
+                            <td >{{item.nombre}} {{item.apellidoP}} {{item.apellidoM}}</td>
+                            <td >{{item.telefono}}</td>
+                            <td >itsmarts@gmail.com</td>
+                            <td >{{item.puesto}}</td>
+                            <td >
+                                <button pButton pRipple type="button" (click)="Buscar()" icon="pi pi-search" 
                                     class="p-button-rounded p-button-success p-button-outlined "
                                     style='width:25px; height:25px'></button>
                                 <button pButton [routerLink]="['/editarCliente',item.id]" pRipple type="button"

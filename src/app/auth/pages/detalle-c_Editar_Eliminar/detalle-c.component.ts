@@ -23,7 +23,7 @@ import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
   ]
 })
 export class DetalleCComponent implements AfterViewInit, OnInit  {
-  @Input() lngLat: [number, number] = [-101.60257306554463, 21.09640385894646];
+  @Input() lngLat: [number, number] = [-101.68337786078459,21.1213454578527];;
   @ViewChild('mapa') divMapa!: ElementRef;
   @Input() estados!: InterfazEstados[] ;
   tipoSeleccionado: number = 0;
@@ -100,7 +100,14 @@ this.authService.getAllEstados()
     })
   }
 
-  
+  Buscar(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Esta función no se encuentra activa',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
 
 
 

@@ -12,7 +12,6 @@ import { InterfazMunicipios, Municipio } from '../interfaces/municipio.interface
 })
 export class AuthService {
   private baseUrl: string = environmentConsumoApi.baseUrl;
-  //  baseUrl2= 'https://practicaits2022-production.up.railway.app/api/clientes'
 
   constructor(private http: HttpClient) { }
 
