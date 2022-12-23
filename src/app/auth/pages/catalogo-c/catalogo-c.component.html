@@ -1,3 +1,4 @@
+<br>
 <div class="row">
     <div class=" col-3">
         <p-image src="./assets/logo-itsmarts.png" alt="Image" width="150"></p-image>
@@ -14,7 +15,7 @@
     </div>
     <div class="col-8">
         <div class="text-layout">
-            <button pButton type="button" class="p-button-sm" routerLink="/auth/detalleCliente"><i
+            <button pButton type="button" class="p-button-sm" routerLink="/detalleClienteGuardar" ><i
                     class="pi pi-pencil"></i>&nbsp;Nuevo registro</button>
         </div>
         <br>
@@ -52,11 +53,11 @@
                             <td *ngIf="item.estatus!>=1">{{item.fkEstado}}</td>
                             <td *ngIf="item.estatus!>=1">{{item.codigoPostal}}</td>
                             <td *ngIf="item.estatus!>=1">
-                                <button pButton pRipple type="button" icon="pi pi-search"
+                                <button pButton pRipple type="button" icon="pi pi-search" 
                                     class="p-button-rounded p-button-success p-button-outlined "
                                     style='width:25px; height:25px'></button>
-                                <button pButton [routerLink]="['/auth/editarCliente',item.id]" pRipple type="button"
-                                    icon="pi pi-bell" class="p-button-rounded p-button-warning p-button-outlined"
+                                <button pButton [routerLink]="['/editarCliente',item.id]" pRipple type="button"
+                                    icon="pi pi-file-edit" class="p-button-rounded p-button-warning p-button-outlined"
                                     style='width:25px; height:25px'></button>
                                 <button pButton (click)="borrarCliente(item)" pRipple type="button" icon="pi pi-times"
                                     class="p-button-rounded p-button-danger p-button-outlined"

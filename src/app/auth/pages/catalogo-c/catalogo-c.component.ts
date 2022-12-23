@@ -68,10 +68,6 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.getAllClientes();
     this.buscar();
-   
-
-    
-   
 }
 
 getAllClientes(){

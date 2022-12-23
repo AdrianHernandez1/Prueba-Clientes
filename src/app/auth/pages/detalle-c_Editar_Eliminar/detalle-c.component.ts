@@ -30,14 +30,12 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
   clientes!:Cliente;
   estadosDatos!:InterfazEstados;
   municipiosDatos!: InterfazMunicipios;
-
-
-
+  
   constructor(private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,) { }
-    ngOnInit() {
+    ngOnInit():void {
       this.getAllEstados();
       if(!this.router.url.includes('editarCliente')){
         return;
@@ -47,8 +45,6 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
           switchMap(({ id }) => this.authService.getClientePorId(id))
         )
         .subscribe(cliente => this.clientes = cliente);
-
-        
     }   
 
 
@@ -65,7 +61,9 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
       .addTo(mapa);
   }
 
+  
   registro() {
+
     if (this.clientes.id=== 0) {
       return;
     }
@@ -82,20 +80,8 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
                       })
                       this.router.navigate(["/auth/catalogoCliente"]);
         })
-    } else {
-      //Crear
-      this.authService.registro(this.clientes)
-        .subscribe(cliente => {
-          this.router.navigate(['/auth/editarCliente/',cliente.id]);
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Se guardo el cliente con exito',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        });
-    }
+    } 
+    
   }
 
   getAllEstados(){
