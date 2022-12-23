@@ -31,7 +31,8 @@ import { DetalleCGuardarComponent } from './pages/detalle-c-guardar/detalle-c-gu
     CatalogoCComponent,
     DetalleCGuardarComponent,
     PrimeNgModule,
-    CommonModule,
+    CommonModule
+    
 
        
   ]

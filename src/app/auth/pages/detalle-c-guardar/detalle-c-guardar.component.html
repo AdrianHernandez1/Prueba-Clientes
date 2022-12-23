@@ -61,11 +61,17 @@
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Estado</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="fkEstado">
+                <select name="miselect"  [(ngModel)]="datoEstado"  class="form-control" style="background: #F4F6F6;" formControlName="fkEstado">
+                    <option>Selecciona un estado</option>
+                    <option *ngFor="let itemEstado of estadosDatos.estados" [value]="itemEstado.id">{{itemEstado.nombreEstado}} </option>
+                </select>
             </div>
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
-                <input  type="text" class="form-control" style="background: #F4F6F6;" formControlName="fkMunicipio">
+             <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
+             <select  name="miselect"   class="form-control" style="background: #F4F6F6;" formControlName="fkMunicipio">
+                <option>Selecciona un municipio</option>
+                <option *ngFor="let itemMunicipio of municipiosDatos.municipios" [hidden]='!(datoEstado == itemMunicipio.fkEstado)' [value]="itemMunicipio.id">{{itemMunicipio.nombreMunicipio}}</option>
+            </select>
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b></label>

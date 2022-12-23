@@ -10,7 +10,7 @@ import { switchMap } from 'rxjs';
 import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
 
 @Component({
-  selector: 'app-detalle-c',
+  selector: 'app-detalle-c, ',
   templateUrl: './detalle-c.component.html',
   styles: [
     `

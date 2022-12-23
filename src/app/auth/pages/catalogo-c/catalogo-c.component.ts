@@ -53,12 +53,6 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
       .addTo(mapa);
   }
 
-  // buscarClienteCordenadas(cliente:Cliente){
-  //   this.lngLat[ Number(cliente.longitud),Number(cliente.latitud)];
-  //   alert(this.lngLat);
-    
-  // }
-
   constructor(
     private authService: AuthService,
     private router:Router,
@@ -89,7 +83,7 @@ borrarCliente(cliente:Cliente){
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: 'Si, eliminar!'
-  }).then((result) => {
+    }).then((result) => {
     if (result.isConfirmed) {
       this.authService.borrarCliente(cliente )
     .subscribe( resp => {
@@ -101,6 +95,7 @@ borrarCliente(cliente:Cliente){
         'success'
       )
     }
+   
   })  
 }
 

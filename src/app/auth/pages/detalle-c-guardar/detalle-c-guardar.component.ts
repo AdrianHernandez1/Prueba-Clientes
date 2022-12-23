@@ -1,9 +1,12 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import * as mapboxgl from 'mapbox-gl';
+import { InterfazEstados } from '../../interfaces/estados.interfaces';
+import { Cliente } from '../../interfaces/interfaces';
+import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
 
 @Component({
   selector: 'app-detalle-c-guardar',
@@ -18,9 +21,15 @@ import * as mapboxgl from 'mapbox-gl';
     `
   ]
 })
-export class DetalleCGuardarComponent {
+export class DetalleCGuardarComponent implements AfterViewInit, OnInit{
   @Input() lngLat: [number, number] = [-101.60257306554463, 21.09640385894646];
   @ViewChild('mapa') divMapa!: ElementRef;
+  datoEstado:number=0;
+
+  ngOnInit():void {
+    this.getAllEstados();
+    
+  }   
 
   ngAfterViewInit(): void {
     const mapa = new mapboxgl.Map({
@@ -34,6 +43,7 @@ export class DetalleCGuardarComponent {
       .setLngLat(this.lngLat)
       .addTo(mapa);
   }
+  
 
 
 
@@ -105,7 +115,29 @@ miFormulario: FormGroup = this.fb.group({
         });
   
     }
+
+    @Input() estados!: InterfazEstados[] ;
+    tipoSeleccionado: number = 0;
+    clientes!:Cliente;
+    estadosDatos!:InterfazEstados;
+    municipiosDatos!: InterfazMunicipios;
     
+  
+    getAllEstados(){
+  this.authService.getAllEstados()
+      .subscribe(estado=>{
+   this.estadosDatos=estado;
+      }
+      )
+      this.getAllMunicipio();
+    }
+  
+    getAllMunicipio(){
+      this.authService.getAllMunicipios()
+      .subscribe(municipio=>{
+        this.municipiosDatos=municipio;
+      })
+    }
   
 
 }

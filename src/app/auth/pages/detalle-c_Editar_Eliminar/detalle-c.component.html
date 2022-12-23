@@ -66,7 +66,7 @@
              <label  class="form-label" style="color:#0715BA"><b>Municipio</b></label>
              <select name="miselect"   [(ngModel)]="clientes.fkMunicipio" class="form-control" style="background: #F4F6F6;" >
                 <option>Selecciona un estado</option>
-                <option *ngFor="let item of municipiosDatos.municipios" [hidden]='!(clientes.fkEstado == item.fkEstado)'[value]="item.id">{{item.nombreMunicipio}}</option>
+                <option *ngFor="let item of municipiosDatos.municipios" [hidden]='!(clientes.fkEstado == item.fkEstado)' [value]="item.id">{{item.nombreMunicipio}}</option>
             </select>
             </div>
             <div class="col-6">
