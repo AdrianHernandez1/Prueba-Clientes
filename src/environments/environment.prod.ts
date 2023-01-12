@@ -4,5 +4,5 @@ export const environment = {
 };
 export const environmentConsumoApi = {
   production: true,
-  baseUrl: 'https://practicaits2022-production.up.railway.app'
+  baseUrl: 'https://rest-server-clients.up.railway.app'
 };

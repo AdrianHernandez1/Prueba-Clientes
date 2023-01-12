@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+<br>
+<div class="row">
+    <div class=" col-3">
+    </div>
+    <div class=" col-9">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText pInputText class="p-inputtext-sm inputBuscar" 
+                placeholder="Buscar información">
+        </span> <br><br> <br>
+    </div>
+    <div class="col-12">
+        <p-toolbar>
+            <div class="p-toolbar-group-left">
+                <span><b>Tabla de movimientos del sistema </b></span>
+            </div>
+            <div class="p-toolbar-group-right">
+                <button pButton type="button" class="p-button-sm p-button-danger" (click)="imprimirLista()"><i
+                    class="pi pi-file-pdf"></i>&nbsp;Exportar a PDF</button>&nbsp;
+            <button pButton type="button" class="p-button-sm p-button-success" (click)="exportarExcel()"><i
+                    class="pi pi-file-excel"></i>&nbsp;Exportar a Excel</button>
+            </div>
+        </p-toolbar>
+        <div class="gid" >
+            <div class="p-col mt-2" #datoTabla id="datoTabla">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID Movimiento</th>
+                            <th>Usuario</th>
+                            <th>Descripcción </th>
+                            <th>Fecha</th>
+                            <th>Acción realizada </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of bitacoraDatos.resutls" >
+                            <td>{{item.idLog}}</td>
+                            <td>{{item.user_name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.date}}</td>
+                            <td>{{item.action}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

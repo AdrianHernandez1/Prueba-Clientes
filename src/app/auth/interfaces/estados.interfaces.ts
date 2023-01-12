@@ -1,8 +1,9 @@
 export interface InterfazEstados {
-    estados: Estado[];
+    states: State[];
 }
 
-export interface Estado {
-    id:           number;
-    nombreEstado: string;
+export interface State {
+    idState: number;
+    name:    string;
+    status:  boolean;
 }

@@ -1,9 +1,10 @@
 export interface InterfazMunicipios {
-    municipios: Municipio[];
+    municipalities: Municipality[];
 }
 
-export interface Municipio {
-    id:              number;
-    nombreMunicipio: string;
-    fkEstado:        number;
+export interface Municipality {
+    idMunicipality:       number;
+    name:                 string;
+    status:               boolean;
+    idState_Municipality: number;
 }

@@ -5,7 +5,6 @@ import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import * as mapboxgl from 'mapbox-gl';
 import { InterfazEstados } from '../../interfaces/estados.interfaces';
-import { Cliente } from '../../interfaces/interfaces';
 import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
 
 @Component({
@@ -51,56 +50,33 @@ export class DetalleCGuardarComponent implements AfterViewInit, OnInit{
     private activatedRoute: ActivatedRoute) { }
 
 miFormulario: FormGroup = this.fb.group({
-    nombre:     [, [ Validators.required ,Validators.minLength(1), Validators.maxLength(50) ]],
-    apellidoP:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50)]],
-    apellidoM: [' ', [Validators.maxLength(50)]],
-    rfc:     [, [ Validators.required ,Validators.minLength(1), Validators.maxLength(13) ]],
-    nombreFiscal:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50)]],
-    telefono: [, [ Validators.required,Validators.minLength(1), Validators.maxLength(10) ]],
-    puesto:     [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50) ]],
-    sucursal:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50)]],
-    colonia: [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50) ]],
-    codigoPostal:     [, [ Validators.required,Validators.minLength(1), Validators.maxLength(5) ]],
-    email:    [, [ Validators.required,Validators.minLength(1), Validators.email, Validators.maxLength(60)]],
-    fkEstado: [, [ Validators.required , Validators.maxLength(5)]],
-    fkMunicipio:     [, [ Validators.required ,Validators.minLength(1), Validators.maxLength(5)]],
-    referencia:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(100)]],
-    latitud: [, [ Validators.required,Validators.minLength(1), Validators.maxLength(20) ]],
-    longitud:     [, [ Validators.required,Validators.minLength(1), Validators.maxLength(20)  ]]
+  full_name:     [, [ Validators.required ,Validators.minLength(1), Validators.maxLength(70) ]],
+  phone: [, [ Validators.required,Validators.minLength(1), Validators.maxLength(10) ]],
+  email:    [, [ Validators.required,Validators.minLength(1), Validators.email, Validators.maxLength(70)]],
+  housing: [, [ Validators.required,Validators.minLength(1), Validators.maxLength(50) ]],
+  street:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(100)]],
+  postal_code:     [, [ Validators.required,Validators.minLength(1), Validators.maxLength(5) ]],
+  idMunicipality_Customer:    [, [ Validators.required,Validators.minLength(1), Validators.maxLength(5)]]
   });
 
   registro() {
-      const { nombre,
-        apellidoP,
-        apellidoM,
-        telefono,
-        puesto,
-        sucursal,
-        rfc,
-        nombreFiscal,
-        latitud,
-        longitud,
-        fkEstado,
-        fkMunicipio,
-        codigoPostal,
-        colonia,
-        referencia} = this.miFormulario.value;
+      const { 
+        full_name,
+        phone,
+        email,
+        housing,
+        street,
+        postal_code,
+        idMunicipality_Customer
+      } = this.miFormulario.value;
   
-      this.authService.registro( nombre,
-        apellidoP,
-        apellidoM,
-        telefono,
-        puesto,
-        sucursal,
-        rfc,
-        nombreFiscal,
-        latitud,
-        longitud,
-        fkEstado,
-        fkMunicipio,
-        codigoPostal,
-        colonia,
-        referencia )
+      this.authService.registro( full_name,
+        phone,
+        email,
+        housing,
+        street,
+        postal_code,
+        idMunicipality_Customer )
         .subscribe( ok => {
           Swal.fire({
                       position: 'top-end',
@@ -122,7 +98,6 @@ miFormulario: FormGroup = this.fb.group({
 
     @Input() estados!: InterfazEstados[] ;
     tipoSeleccionado: number = 0;
-    clientes!:Cliente;
     estadosDatos!:InterfazEstados;
     municipiosDatos!: InterfazMunicipios;
     
@@ -150,6 +125,7 @@ miFormulario: FormGroup = this.fb.group({
         showConfirmButton: false,
         timer: 1500
       });
+      alert(this.datoEstado)
     }
   
 

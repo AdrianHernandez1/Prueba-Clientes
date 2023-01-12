@@ -1,0 +1,57 @@
+<!-- 
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #D6EAF8;">
+  <div>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <img src="./assets/logo-itsmarts.png" alt="Image" width="150">
+        </li>
+          <li class="nav-item mx-8"><a class="nav-link" href="#" routerLink="/catalogoCliente"><i class="fas fa-book"></i>&nbsp;Clientes</a></li>
+          <li class="nav-item mx-5"><a class="nav-link" href="#" routerLink="/catalogoUsuario"><i class="fas fa-users"></i>&nbsp;Usuarios</a></li>
+          <li class="nav-item mx-5"><a class="nav-link" href="#" routerLink="/bitacora"><i class="fas fa-user-tie"></i>&nbsp;Bitacora</a></li>
+          <li class="nav-item mx-5"><a class="nav-link" href="#" (click)="cerrarSesion()"><i class="fas fa-user-cog"></i>&nbsp;Cerrar Sesión</a></li>
+      </ul>
+
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg rounded sticky-top " style="background-color: #D6EAF8;">
+  <div class="container-fluid">
+                      <embed type="image/svg+xml" src="./assets/logo-itsmarts.png" width="70" class="mx-2">	
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNav"
+      aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end my-md-0" id="barraNav">
+                          <ul class="navbar-nav ms-md-3 me-auto">
+        <li>
+          <a href="#" class="nav-link text-center " routerLink="/catalogoCliente">
+                      <i class="fas fa-air-freshener"></i>
+            Clientes
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-center" routerLink="/catalogoUsuario">
+            <i class="fas fa-hot-tub"></i>
+            Usuarios
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-center" routerLink="/bitacora">
+            <i class="fas fa-address-card"></i>
+            Bitacora
+          </a>                          
+      </ul>               
+      <ul class="navbar-nav mx-5 mb-4 mb-lg-0">
+        <li class="nav-item text-center">
+          <a href="#" class="nav-link text-center" (click)="cerrarSesion()">
+            <i class="fas fa-address-card"></i>
+            Cerrar Sesion
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="text-end">
+  <span class="h5"><b>Bienvenido {{usuario}}</b></span>
+</div>

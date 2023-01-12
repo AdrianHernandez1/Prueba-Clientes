@@ -7,7 +7,10 @@ import { MenubarModule } from 'primeng/menubar'
 import {ToolbarModule} from 'primeng/toolbar'
 import {TableModule} from 'primeng/table'
 import {ImageModule} from 'primeng/image'
-import {InputTextModule} from 'primeng/inputtext';
+import {InputTextModule} from 'primeng/inputtext'
+import {TabMenuModule} from 'primeng/tabmenu'
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   exports: [
@@ -18,7 +21,9 @@ import {InputTextModule} from 'primeng/inputtext';
     ToolbarModule,
     TableModule,
     ImageModule,
-    InputTextModule
+    InputTextModule,
+    TabMenuModule,
+    MatToolbarModule
   ]
 })
 export class PrimeNgModule { }

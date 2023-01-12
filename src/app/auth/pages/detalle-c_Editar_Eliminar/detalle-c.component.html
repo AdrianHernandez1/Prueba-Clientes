@@ -1,88 +1,50 @@
-
+<app-menu></app-menu>
 <div class="row">
-    <div class="col-12 text-center alert alert-info">
-        <p-image src="./assets/logo-itsmarts.png" alt="Image" width="150"></p-image>
-    </div>
      <div class="col-6">
         <h5><b>INFORMACIÓN DEL CLIENTE</b></h5>
         <hr><br>
         <div class="row">
-            <input  type="text" hidden class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.id" readonly>
+            <input  type="text" hidden class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.idCustomer" >
             <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" [(ngModel)]="clientes.nombre" required="required" placeholder="Ej:Luis Adrián">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Apellido Paterno</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  [(ngModel)]="clientes.apellidoP" required="required" placeholder="Ej:Hernández">
-            </div>
-            <div class="col-6" >
-                    <label  class="form-label" style="color:#0715BA"><b>Apellido Materno</b></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.apellidoM" >
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>RFC</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.rfc" required="required" placeholder="Ej:123RFC123">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Nombre fiscal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.nombreFiscal" required="required" placeholder="Ej:Nombre Fiscal">
+                <label  class="form-label" style="color:#0715BA"><b>Nombre completo</b><span class="text-danger">*</span></label>
+                <input  type="text" class="form-control"  minlength="4" maxlength="70" [(ngModel)]="clientes.full_name" required="required" placeholder="Ej:Luis Adrián">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger">*</span></label>
                 <input  ondrop="return false;" onpaste="return false;"
-                onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" class="form-control"   [(ngModel)]="clientes.telefono" required="required" placeholder="Ej:4771234567">
+                onkeypress="return event.charCode>=48 && event.charCode<=57" minlength="4" maxlength="10" type="text" class="form-control"   [(ngModel)]="clientes.phone" required="required" placeholder="Ej:4771234567">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
-                <input   type="email" ng-pattern="eml_add"  class="form-control" required="required" placeholder="Ej:hernandez@gmail.com" value="itsmarts@gmail.com">
+                <input   type="email" ng-pattern="eml_add"  class="form-control" minlength="4" maxlength="70" [(ngModel)]="clientes.email" required="required" placeholder="Ej:hernandez@gmail.com" value="itsmarts@gmail.com">
             </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Puesto</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.puesto" required="required"  placeholder="Ej:Vendedor">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Sucursal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.sucursal" required="required"  placeholder="Ej:Sucursal León">
-            </div>
+            
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.colonia" required="required" placeholder="Ej:Centro">
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.housing" minlength="4" maxlength="70" required="required" placeholder="Ej:Centro">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  required="required"  placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
+                <input  type="text" class="form-control" [(ngModel)]="clientes.street" minlength="4" maxlength="70" required="required"  placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.codigoPostal" required="required"  placeholder="Ej:37200">
+                <input  type="text" class="form-control"   [(ngModel)]="clientes.postal_code" minlength="1" maxlength="5"required="required"  placeholder="Ej:37200">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
-                <select name="miselect"   [(ngModel)]="clientes.fkEstado" class="form-control" required="required" placeholder="Selecciona un estado">
+                <select name="miselect"   class="form-control"  [(ngModel)]="clientes.idMunicipality_Customer" required="required" placeholder="Selecciona un estado">
                     <option>Selecciona un estado</option>
-                    <option *ngFor="let item of estadosDatos.estados" [value]="item.id">{{item.nombreEstado}}</option>
+                    <option *ngFor="let item of estadosDatos.states" [value]="item.idState">{{item.name}}</option>
                 </select>
             </div>
             <div class="col-6">
              <label  class="form-label" style="color:#0715BA"><b>Municipio</b><span class="text-danger">*</span></label>
-             <select name="miselect"   [(ngModel)]="clientes.fkMunicipio" class="form-control" required="required" placeholder="Selecciona un municipio">
+             <select name="miselect"   class="form-control" required="required" placeholder="Selecciona un municipio">
                 <option>Selecciona un estado</option>
-                <option *ngFor="let item of municipiosDatos.municipios" [hidden]='!(clientes.fkEstado == item.fkEstado)' [value]="item.id">{{item.nombreMunicipio}}</option>
+                <option *ngFor="let item of municipiosDatos.municipalities" [hidden]='!(clientes.idMunicipality_Customer == item.idState_Municipality)' [value]="item.idMunicipality">{{item.name}}</option>
             </select>
             </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Fecha de creación</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  placeholder="Ej:23/12/2022" required="required" value="23/12/2022" readonly style="background: #F4F6F6;">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Referencia</b><span class="text-danger">*</span></label>
-                <span class="p-input-icon-right">
-                    <i class="pi pi-search"></i>
-                    <input  type="text" class="form-control"  style="width: 290px;" [(ngModel)]="clientes.referencia" required="required" placeholder="Ej: Se encuentra entre calle X y Y">     
-                </span>
-            </div>
-            
         </div>
     </div>
     <div class="col-6">
@@ -96,21 +58,12 @@
             <div class="col-12">
                 <label  class="form-label" style="color:#0715BA"><b>Cordenadas</b></label>
             </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" [(ngModel)]="clientes.latitud" required="required" placeholder="Ej:-101.68337786078459">
-            </div>
-            <div class="col-6">
-                <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.longitud" required="required" placeholder="Ej:21.1213454578527">
-            </div>
             <div class="col-12 text-center my-4">
-                <button pButton pRipple (click)="Buscar()" type="button" label="Buscar" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;width:300px; height:50px" ></button>
+                <button pButton pRipple (click)="Buscar()" type="button" minlength="4" maxlength="20" label="Buscar" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;width:300px; height:50px" ></button>
             </div>
         </div>
     </div>
     <div class="col-12 text-center my-5">
-        <button pButton pRipple type="submit" (click)="registro()"  class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;Aceptar</button>
+        <button pButton pRipple type="submit" (click)="registro()" minlength="4" maxlength="20" class="p-button-success"  ><i class="pi pi-save"></i>&nbsp;Aceptar</button>
     </div>
 </div>  
- 

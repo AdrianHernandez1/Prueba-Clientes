@@ -2,10 +2,10 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import * as mapboxgl from 'mapbox-gl';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { InterfazEstados, Estado } from '../../interfaces/estados.interfaces';
-import { Cliente } from '../../interfaces/interfaces';
+import { InterfazEstados } from '../../interfaces/estados.interfaces';
+import { Customer, InterfazCliente } from '../../interfaces/interfaces';
 import { switchMap } from 'rxjs';
 import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
 
@@ -27,14 +27,17 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
   @ViewChild('mapa') divMapa!: ElementRef;
   @Input() estados!: InterfazEstados[] ;
   tipoSeleccionado: number = 0;
-  clientes!:Cliente;
+  clientes!:Customer;
+  clientes2!:InterfazCliente;
   estadosDatos!:InterfazEstados;
   municipiosDatos!: InterfazMunicipios;
   
   constructor(private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute) { }
+
+    
     ngOnInit():void {
       this.getAllEstados();
       if(!this.router.url.includes('editarCliente')){
@@ -42,9 +45,9 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
       }
       this.activatedRoute.params
         .pipe(
-          switchMap(({ id }) => this.authService.getClientePorId(id))
+          switchMap(({ idCustomer }) => this.authService.getClientePorId(idCustomer))
         )
-        .subscribe(cliente => this.clientes = cliente);
+        .subscribe(customers=> this.clientes = customers);
     }   
 
 
@@ -63,11 +66,10 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
 
   
   registro() {
-
-    if (this.clientes.id=== 0) {
+    if (this.clientes.idCustomer=== 0) {
       return;
     }
-    if (this.clientes.id) {
+    if (this.clientes.idCustomer) {
       //Actualizar 
       this.authService.actualizarCliente(this.clientes)
         .subscribe(cliente => {
@@ -79,7 +81,6 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
                         showConfirmButton: false,
                         timer: 1500
                       })
-                      
         },(error)=>{
           Swal.fire({
             icon: 'error',
@@ -114,5 +115,4 @@ this.authService.getAllEstados()
       timer: 1500
     });
   }
-
 }
