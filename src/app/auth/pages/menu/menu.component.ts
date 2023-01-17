@@ -16,7 +16,7 @@ constructor(private router: Router,
   private authService: AuthService){}
 
 usuario:any;
-nombre=localStorage.getItem("usuario");
+nombre=sessionStorage.getItem("usuario");
 
 
   ngOnInit() {
@@ -31,10 +31,13 @@ nombre=localStorage.getItem("usuario");
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, cerrar sesión!'
-      }).then((result) => {
+      }
+      ).then((result) => {
       if (result.isConfirmed) {
         this.authService.logout();
         this.router.navigateByUrl('/login');
+      }else{
+        this.router.navigateByUrl('/catalogoCliente')
       }
     }
     )

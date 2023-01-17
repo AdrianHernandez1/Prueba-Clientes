@@ -10,29 +10,29 @@
             <input  type="text" hidden class="form-control" style="background: #F4F6F6;"  readonly>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Nombre</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="full_name"  placeholder="Ej:Luis Adrián">
+                <input  type="text" class="form-control" minlength="4" maxlength="70" formControlName="full_name"  placeholder="Ej:Luis Adrián">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger" >*</span></label>
                 <input  ondrop="return false;" onpaste="return false;"
-                onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" class="form-control" formControlName="phone" placeholder="Ej:4771234567">
+                onkeypress="return event.charCode>=48 && event.charCode<=57" minlength="4" maxlength="10" type="text" class="form-control" formControlName="phone" placeholder="Ej:4771234567">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" formControlName="email" placeholder="Ej:hernandez@gmail.com">
+                <input  type="text" class="form-control" formControlName="email" minlength="4" maxlength="70" placeholder="Ej:hernandez@gmail.com">
             </div>
             
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="housing"  placeholder="Ej:Centro">
+                <input  type="text" class="form-control"  formControlName="housing" minlength="4" maxlength="70" placeholder="Ej:Centro">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   formControlName="street" placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
+                <input  type="text" class="form-control"   formControlName="street" minlength="4" maxlength="70" placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="postal_code"  placeholder="Ej:37200">
+                <input  type="text" class="form-control"  formControlName="postal_code" minlength="1" maxlength="5" placeholder="Ej:37200">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
@@ -63,11 +63,11 @@
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>X:(Latitud)</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  placeholder="Ej:-101.68337786078459">
+                <input  type="text" class="form-control" minlength="4" maxlength="20"  placeholder="Ej:-101.68337786078459">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Y:(Longitud)</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  placeholder="Ej:21.1213454578527">
+                <input  type="text" class="form-control" minlength="4" maxlength="20" placeholder="Ej:21.1213454578527">
             </div>
             <div class="col-12 text-center my-4">
                 <button pButton pRipple type="button" label="Buscar" (click)="Buscar()" class="p-button-raised p-button-text" style="background-color: #F4F6F6; color: #0715BA;" style='width:300px; height:50px'></button>

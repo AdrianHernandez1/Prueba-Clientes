@@ -68,7 +68,7 @@ html, body {
   
   a:hover {
       text-decoration: none;
-    color: #a64bf4;
+    color: #17202A ;
   }
   
   /*---------------------------------------------*/
@@ -318,8 +318,8 @@ html, body {
     z-index: -1;
     width: 300%;
     height: 100%;
-    background: rgb(96,207,220);
-    background: linear-gradient(90deg, rgba(96,207,220,1) 0%, rgba(190,52,218,1) 92%);
+    background: rgb(141, 198, 205);
+    background: linear-gradient(90deg, rgb(147, 204, 210) 0%, rgb(152, 218, 203) 92%);
     top: 0;
     left: -100%;
   

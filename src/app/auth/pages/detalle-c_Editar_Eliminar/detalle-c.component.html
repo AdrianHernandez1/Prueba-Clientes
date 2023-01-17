@@ -4,45 +4,45 @@
         <h5><b>INFORMACIÓN DEL CLIENTE</b></h5>
         <hr><br>
         <div class="row">
-            <input  type="text" hidden class="form-control" style="background: #F4F6F6;" [(ngModel)]="clientes.idCustomer" >
+            <input  type="text" hidden class="form-control" style="background: #F4F6F6;" [(ngModel)]="customer.idCustomer" >
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Nombre completo</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  minlength="4" maxlength="70" [(ngModel)]="clientes.full_name" required="required" placeholder="Ej:Luis Adrián">
+                <input  type="text" class="form-control"  minlength="4" maxlength="70" [(ngModel)]="customer.full_name" required="required" placeholder="Ej:Luis Adrián">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Teléfono</b><span class="text-danger">*</span></label>
                 <input  ondrop="return false;" onpaste="return false;"
-                onkeypress="return event.charCode>=48 && event.charCode<=57" minlength="4" maxlength="10" type="text" class="form-control"   [(ngModel)]="clientes.phone" required="required" placeholder="Ej:4771234567">
+                onkeypress="return event.charCode>=48 && event.charCode<=57" minlength="4" maxlength="10" type="text" class="form-control"   [(ngModel)]="customer.phone" required="required" placeholder="Ej:4771234567">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
-                <input   type="email" ng-pattern="eml_add"  class="form-control" minlength="4" maxlength="70" [(ngModel)]="clientes.email" required="required" placeholder="Ej:hernandez@gmail.com" value="itsmarts@gmail.com">
+                <input   type="email" ng-pattern="eml_add"  class="form-control" minlength="4" maxlength="70" [(ngModel)]="customer.email" required="required" placeholder="Ej:hernandez@gmail.com" value="itsmarts@gmail.com">
             </div>
             
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Colonia</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.housing" minlength="4" maxlength="70" required="required" placeholder="Ej:Centro">
+                <input  type="text" class="form-control"   [(ngModel)]="customer.housing" minlength="4" maxlength="70" required="required" placeholder="Ej:Centro">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Calle</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" [(ngModel)]="clientes.street" minlength="4" maxlength="70" required="required"  placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
+                <input  type="text" class="form-control" [(ngModel)]="customer.street" minlength="4" maxlength="70" required="required"  placeholder="Ej: Blvr.Adolfo Lopez Mateos #507">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Codigo Postal</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"   [(ngModel)]="clientes.postal_code" minlength="1" maxlength="5"required="required"  placeholder="Ej:37200">
+                <input  type="text" class="form-control"   [(ngModel)]="customer.postal_code" minlength="1" maxlength="5"required="required"  placeholder="Ej:37200">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Estado</b><span class="text-danger">*</span></label>
-                <select name="miselect"   class="form-control"  [(ngModel)]="clientes.idMunicipality_Customer" required="required" placeholder="Selecciona un estado">
+                <select name="miselect"   class="form-control"  [(ngModel)]="customer.idState_Customer" required="required" placeholder="Selecciona un estado">
                     <option>Selecciona un estado</option>
                     <option *ngFor="let item of estadosDatos.states" [value]="item.idState">{{item.name}}</option>
                 </select>
             </div>
             <div class="col-6">
              <label  class="form-label" style="color:#0715BA"><b>Municipio</b><span class="text-danger">*</span></label>
-             <select name="miselect"   class="form-control" required="required" placeholder="Selecciona un municipio">
+             <select name="miselect"   class="form-control" [(ngModel)]="customer.idMunicipality_Customer" required="required" placeholder="Selecciona un municipio">
                 <option>Selecciona un estado</option>
-                <option *ngFor="let item of municipiosDatos.municipalities" [hidden]='!(clientes.idMunicipality_Customer == item.idState_Municipality)' [value]="item.idMunicipality">{{item.name}}</option>
+                <option *ngFor="let item of municipiosDatos.municipalities" [hidden]='!(customer.idState_Customer == item.idState_Municipality)' [value]="item.idMunicipality">{{item.name}}</option>
             </select>
             </div>
         </div>

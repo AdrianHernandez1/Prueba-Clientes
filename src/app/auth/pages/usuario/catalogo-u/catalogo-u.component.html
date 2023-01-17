@@ -42,10 +42,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of usuariosDatos.users">
+                        <tr *ngFor="let item of usuariosDatos.users"[hidden]='!(item.status == true)' >
                             <td>{{item.name}}</td>
                             <td>{{item.email}}</td>
-                            <td>{{(item.idRole_User)}}</td>
+                            <td>{{(item.role)}}</td>
                             <td>
                                 <button pButton [routerLink]="['/editarUsuario',item.idUser]" pRipple type="button"
                                     icon="pi pi-file-edit" class="p-button-rounded p-button-warning p-button-outlined"

@@ -8,11 +8,18 @@ import { CatalogoUComponent } from './auth/pages/usuario/catalogo-u/catalogo-u.c
 import { DetalleUComponent } from './auth/pages/usuario/detalle-u/detalle-u.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { DetalleUEditarEliminarComponent } from './auth/pages/usuario/detalle-u-editar-eliminar/detalle-u-editar-eliminar.component';
+import { RedireccionComponent } from './auth/pages/redireccion/redireccion.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    
+  },
+  {
+    path: 'redireccion',
+    component: RedireccionComponent,
+    
   },
   {
     path: 'catalogoCliente',
@@ -53,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'catalogoCliente'
+    redirectTo: 'redireccion'
   }
 
 

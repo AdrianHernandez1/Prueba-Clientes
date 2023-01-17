@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { environmentConsumoApi } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
-import { InterfazEstados, State } from '../interfaces/estados.interfaces';
+import { InterfazEstados } from '../interfaces/estados.interfaces';
 import { InterfazCliente, Customer } from '../interfaces/interfaces';
-import { InterfazMunicipios, Municipality } from '../interfaces/municipio.interfaces';
+import { InterfazMunicipios } from '../interfaces/municipio.interfaces';
 import { InterfazLogin } from '../interfaces/login.interface';
 import { InterfazUsuario, User } from '../interfaces/usuarios.interface';
 import { InterfazBitacora } from '../interfaces/bitacora.interfaces';
@@ -15,7 +15,7 @@ import { InterfazBitacora } from '../interfaces/bitacora.interfaces';
 })
 export class AuthService {
   private baseUrl: string = environmentConsumoApi.baseUrl;
-  private token=localStorage.getItem("token");
+  private token=sessionStorage.getItem("token");
 
 
   constructor(private http: HttpClient) { }
@@ -66,7 +66,7 @@ export class AuthService {
 
   //Listado de Estados
   getAllEstados(): Observable<InterfazEstados> {
-    const url = `${this.baseUrl}/api/estados?token=${this.token}?token=${this.token}`;
+    const url = `${this.baseUrl}/api/estados?token=${this.token}`;
     return this.http.get<InterfazEstados>(url);
   }
 
@@ -93,7 +93,7 @@ export class AuthService {
       .pipe(
         tap(resp => {
           if (resp.ok) {
-            localStorage.setItem('token', resp.token!);
+            sessionStorage.setItem('token', resp.token!);
           }
         }),
         map(resp => resp.ok),
@@ -106,7 +106,8 @@ export class AuthService {
     const url = `${this.baseUrl}/api/usuarios?token=${this.token}`;
     return this.http.get<InterfazUsuario>(url);
   }
-  //  //Buscar usuario
+
+  //Buscar usuario
    buscarUsuario(termino: string): Observable<InterfazUsuario> {
     const url = `${this.baseUrl}/api/usuarios/search/name?query=${termino}&token=${this.token}`;
     return this.http.get<InterfazUsuario>(url);
@@ -143,17 +144,23 @@ export class AuthService {
   }
 
   actualizarUsuario(usuario: User): Observable<User> {
-    const url = `${this.baseUrl}/api/clientes/${usuario.idUser}?token=${this.token}`;
+    const url = `${this.baseUrl}/api/usuarios/${usuario.idUser}?token=${this.token}`;
     return this.http.put<User>(url, usuario);
   }
 
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   //Listado de usuario
   getAllBitacora(): Observable<InterfazBitacora> {
     const url = `${this.baseUrl}/api/registros?token=${this.token}`;
+    return this.http.get<InterfazBitacora>(url);
+  }
+
+  //Buscar bitacora
+   buscarBitacora(termino: string): Observable<InterfazBitacora> {
+    const url = `${this.baseUrl}/api/registros/search?query=${termino}&token=${this.token}`;
     return this.http.get<InterfazBitacora>(url);
   }
 }

@@ -26,22 +26,21 @@ export class DetalleUEditarEliminarComponent {
       .pipe(
         switchMap(({ idUser }) => this.authService.getUsuarioPorId(idUser))
       )
-      .subscribe(usuarios => this.usuarios = usuarios);
+      .subscribe(usuario => this.usuarios = usuario);
   }
 
-  registro() {
+  registroUsuario() {
     if (this.usuarios.idUser === 0) {
       return;
     }
     if (this.usuarios.idUser ) {
       //Actualizar 
-      this.authService.actualizarCliente(this.usuarios)
+      this.authService.actualizarUsuario(this.usuarios)
         .subscribe(cliente => {
-          this.router.navigate(["/auth/catalogoCliente"]);
+          this.router.navigate(["../catalogoUsuario"]);
           Swal.fire({
-            position: 'top-end',
             icon: 'success',
-            title: 'Se actualizo el cliente con exito',
+            title: 'Se actualizo el usuario con exito',
             showConfirmButton: false,
             timer: 1500
           })
@@ -49,7 +48,7 @@ export class DetalleUEditarEliminarComponent {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Verifica que tus campos cumplan no esten vacios y cumplan con el ejemplo solicitado'
+            text: error
           })
         });
     }

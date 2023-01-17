@@ -9,22 +9,23 @@
             <input  type="text" hidden class="form-control" style="background: #F4F6F6;"  readonly>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Usuario</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control"  formControlName="name"  placeholder="Ej:Luis Adrián ">
+                <input  type="text" class="form-control" minlength="4" maxlength="15" formControlName="name"  placeholder="Ej:Luis Adrián ">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Correo</b><span class="text-danger">*</span></label>
-                <input  type="text" class="form-control" formControlName="email" placeholder="Ej:hernandez@gmail.com">
+                <input  type="text" class="form-control" minlength="4" maxlength="70" formControlName="email" placeholder="Ej:hernandez@gmail.com">
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Contraseña</b><span class="text-danger">*</span></label>
-                <input  type="password" class="form-control"   formControlName="password" >
+                <input  type="password" class="form-control" minlength="4" maxlength="8"  formControlName="password" >
             </div>
             <div class="col-6">
                 <label  class="form-label" style="color:#0715BA"><b>Rol</b><span class="text-danger">*</span></label>
                 <select  name="miselect"   class="form-control"  formControlName="idRole_User" placeholder="Selecciona un municipio">
                     <option>Selecciona un rol</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Visitador</option>
+                    <option value="1">Super Administrador</option>
+                    <option value="2">Administrador</option>
+                    <option value="3">Visitador</option>
                 </select>
             </div>
         </div>

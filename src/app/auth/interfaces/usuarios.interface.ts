@@ -11,5 +11,6 @@ export interface User {
     email:       string;
     token:       null;
     status:      boolean;
-    idRole_User: number;
+    role:        string;
+    idRole_User: number; 
 }

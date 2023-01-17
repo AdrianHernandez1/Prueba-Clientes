@@ -7,6 +7,7 @@ import { BitacoraComponent } from './pages/bitacora/bitacora.component';
 import { CatalogoUComponent } from './pages/usuario/catalogo-u/catalogo-u.component';
 import { DetalleUComponent } from './pages/usuario/detalle-u/detalle-u.component';
 import { LoginComponent } from './pages/login/login.component';
+import { DetalleUEditarEliminarComponent } from './pages/usuario/detalle-u-editar-eliminar/detalle-u-editar-eliminar.component';
 
 const routes: Routes = [
   {
@@ -46,8 +47,8 @@ const routes: Routes = [
     component: DetalleCComponent
   },
   {
-    path: '**',
-    redirectTo: 'login'
+    path: 'editarUsuario/:idUser',
+    component: DetalleUEditarEliminarComponent
   }
 ];
 

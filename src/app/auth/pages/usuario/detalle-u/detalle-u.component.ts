@@ -47,7 +47,7 @@ miFormulario: FormGroup = this.fb.group({
                       showConfirmButton: false,
                       timer: 1500
                     });
-                    this.router.navigateByUrl('./catalogoUsuario');
+                    this.router.navigateByUrl('/catalogoUsuario');
         },(error)=>{
           Swal.fire({
             icon: 'error',

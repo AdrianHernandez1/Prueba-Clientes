@@ -13,8 +13,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
     
   miFormulario: FormGroup = this.fb.group({
-    user:    ['admin', [ Validators.required, Validators.minLength(1),Validators.maxLength(15)]],
-    password: ['admin', [ Validators.required, Validators.minLength(1),Validators.maxLength(8)]],
+    user:    [, [ Validators.required]],
+    password: [, [ Validators.required]],
   });
 
   constructor( private fb: FormBuilder,
@@ -27,11 +27,11 @@ export class LoginComponent {
     this.authService.login( user, password )
       .subscribe( ok => {          
         if ( ok === true ) {
-          this.router.navigateByUrl('../catalogoCliente');
-          localStorage.setItem('usuario', user);
+          this.router.navigateByUrl('/catalogoCliente');
+          sessionStorage.setItem('usuario', user);
         } else {
           Swal.fire('Error', ok, 'error');
-        
+
   }});
 }
 }

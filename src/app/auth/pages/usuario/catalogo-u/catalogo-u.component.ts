@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 import { InterfazUsuario, User } from '../../../interfaces/usuarios.interface';
 import Swal from 'sweetalert2';
 import *as XLSX from 'xlsx';
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-catalogo-u',
   templateUrl: './catalogo-u.component.html',
@@ -46,6 +48,7 @@ export class CatalogoUComponent {
         console.log(user);
       }, (error) => {
         console.log(error);
+        window.location.reload();
       }
       )
   }
@@ -66,7 +69,7 @@ export class CatalogoUComponent {
           });
         Swal.fire(
           'Eliminado!',
-          'El cliente se elimino con exito',
+          'El usuario se elimino con exito',
           'success'
         )
       }
@@ -89,11 +92,25 @@ export class CatalogoUComponent {
 
 
   imprimirLista() {
-    let pdf = new jsPDF('p', 'mm', [1500, 1500]);
-    pdf.html(this.el.nativeElement, {
-      callback: (pdf) => {
-        pdf.save('Tabla de usuarios');
-      }
+    const DATA: any = document.getElementById('datoTabla');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+ 
+      const img = canvas.toDataURL('image/PNG');
+ 
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`Datos de Usuarios.pdf`);
     });
   }
 

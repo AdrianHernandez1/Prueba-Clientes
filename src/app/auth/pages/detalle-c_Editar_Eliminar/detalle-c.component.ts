@@ -23,12 +23,12 @@ import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
   ]
 })
 export class DetalleCComponent implements AfterViewInit, OnInit  {
+  
   @Input() lngLat: [number, number] = [-101.68337786078459,21.1213454578527];;
   @ViewChild('mapa') divMapa!: ElementRef;
   @Input() estados!: InterfazEstados[] ;
   tipoSeleccionado: number = 0;
-  clientes!:Customer;
-  clientes2!:InterfazCliente;
+  customer!:Customer;
   estadosDatos!:InterfazEstados;
   municipiosDatos!: InterfazMunicipios;
   
@@ -37,7 +37,6 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute) { }
 
-    
     ngOnInit():void {
       this.getAllEstados();
       if(!this.router.url.includes('editarCliente')){
@@ -47,8 +46,35 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
         .pipe(
           switchMap(({ idCustomer }) => this.authService.getClientePorId(idCustomer))
         )
-        .subscribe(customers=> this.clientes = customers);
+        .subscribe(customer=> this.customer = customer);
     }   
+
+
+
+    registro() {
+      if (this.customer.idCustomer=== 0) {
+        return;
+      }
+      if (this.customer.idCustomer) {
+        //Actualizar 
+        this.authService.actualizarCliente(this.customer)
+          .subscribe(cliente => {
+            this.router.navigate(["../catalogoCliente"]);
+            Swal.fire({
+                          icon: 'success',
+                          title: 'Se actualizo el cliente con exito',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
+          },(error)=>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: error
+            })
+          });
+      } 
+    }
 
 
   ngAfterViewInit(): void {
@@ -65,31 +91,7 @@ export class DetalleCComponent implements AfterViewInit, OnInit  {
   }
 
   
-  registro() {
-    if (this.clientes.idCustomer=== 0) {
-      return;
-    }
-    if (this.clientes.idCustomer) {
-      //Actualizar 
-      this.authService.actualizarCliente(this.clientes)
-        .subscribe(cliente => {
-          this.router.navigate(["/auth/catalogoCliente"]);
-          Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Se actualizo el cliente con exito',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-        },(error)=>{
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Verifica que tus campos cumplan no esten vacios y cumplan con el ejemplo solicitado'
-          })
-        });
-    } 
-  }
+  
 
   getAllEstados(){
 this.authService.getAllEstados()

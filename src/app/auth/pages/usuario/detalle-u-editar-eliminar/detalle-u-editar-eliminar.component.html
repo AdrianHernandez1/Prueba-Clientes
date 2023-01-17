@@ -4,7 +4,7 @@
         <h5><b>INFORMACIÓN DE USUARIO</b></h5>
         <hr><br>
         <div class="row">
-            <input type="text"  class="form-control" hidden style="background: #F4F6F6;"
+            <input type="text" hidden class="form-control"  style="background: #F4F6F6;"
                 [(ngModel)]="usuarios.idUser">
             <div class="col-6">
                 <label class="form-label" style="color:#0715BA"><b>Usuario</b><span class="text-danger">*</span></label>
@@ -17,7 +17,7 @@
             <div class="col-6">
                 <label class="form-label" style="color:#0715BA"><b>Contraseña</b><span
                         class="text-danger">*</span></label>
-                <input type="password" class="form-control" minlength="4" maxlength="8" [(ngModel)]="usuarios.password">
+                <input type="password" class="form-control" [(ngModel)]="usuarios.password" minlength="4" maxlength="8" >
             </div>
             <div class="col-6">
                 <label class="form-label" style="color:#0715BA"><b>Rol</b><span class="text-danger">*</span></label>
@@ -25,13 +25,13 @@
                     placeholder="Selecciona un municipio">
                     <option>Selecciona un rol</option>
                     <option value="1">Super Administrador</option>
-                    <option value="2">Admunistrador</option>
+                    <option value="2">Administrador</option>
                     <option value="3">Visitador</option>
                 </select>
             </div>
         </div>
     </div>
     <div class="col-12 text-center my-5">
-        <button pButton pRipple label="Aceptar" class="p-button-success" style='width:300px; height:50px'></button>
+        <button pButton pRipple label="Aceptar" (click)="registroUsuario()"class="p-button-success" style='width:300px; height:50px'></button>
     </div>
 </div>

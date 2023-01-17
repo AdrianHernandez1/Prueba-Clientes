@@ -11,4 +11,5 @@ export class AppComponent {
   ngOnInit(): void { 
     (mapboxgl as any).accessToken = environment.mapboxToken;
   }
+
 }

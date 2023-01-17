@@ -6,6 +6,9 @@ import { InterfazCliente, Customer } from '../../interfaces/interfaces';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import *as XLSX from 'xlsx';
+import html2canvas from 'html2canvas';
+import { windowTime } from 'rxjs';
+
 
 @Component({
   selector: 'app-catalogo-c',
@@ -26,6 +29,7 @@ import *as XLSX from 'xlsx';
   ]
 })
 export class CatalogoCComponent implements AfterViewInit, OnInit {
+  
   @Input() lngLat: [number, number] = [-101.68337786078459, 21.1213454578527];
   @ViewChild('mapa') divMapa!: ElementRef;
   @ViewChild('datoTabla', { static: false }) el!: ElementRef;
@@ -57,20 +61,24 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
   ) {
 
   }
+  usuario:any;
+nombre=sessionStorage.getItem("usuario");
   ngOnInit() {
     this.getAllClientes();
     this.buscar();
+    
   }
 
   getAllClientes() {
     this.authService.getAll()
       .subscribe((customers) => {
         this.clientesDatos = customers;
-        console.log(customers);
       }, (error) => {
         console.log(error);
+        window.location.reload();
       }
       )
+      
   }
 
   borrarCliente(cliente: Customer) {
@@ -111,12 +119,27 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
 
 
   imprimirLista() {
-    let pdf = new jsPDF('p', 'pt', [1000, 1000]);
-    pdf.html(this.el.nativeElement, {
-      callback: (pdf) => {
-        pdf.save('Tabla de clientes');
-      }
-    });
+   const DATA: any = document.getElementById('datoTabla');
+   const doc = new jsPDF('p', 'pt', 'a4');
+   const options = {
+     background: 'white',
+     scale: 3
+   };
+   html2canvas(DATA, options).then((canvas) => {
+
+     const img = canvas.toDataURL('image/PNG');
+
+     const bufferX = 15;
+     const bufferY = 15;
+     const imgProps = (doc as any).getImageProperties(img);
+     const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+     doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+     return doc;
+   }).then((docResult) => {
+     docResult.save(`Datos de Cliente.pdf`);
+   });
+ 
   }
 
   exportarExcel(): void {
@@ -134,7 +157,11 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
       showConfirmButton: false,
       timer: 1500
     });
+    
+
   }
+  
+
 
 }
 

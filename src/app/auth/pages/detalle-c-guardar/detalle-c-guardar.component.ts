@@ -21,6 +21,7 @@ import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
   ]
 })
 export class DetalleCGuardarComponent implements AfterViewInit, OnInit{
+ 
   @Input() lngLat: [number, number] = [-101.68337786078459,21.1213454578527];;
   @ViewChild('mapa') divMapa!: ElementRef;
   datoEstado:number=0;
@@ -79,18 +80,17 @@ miFormulario: FormGroup = this.fb.group({
         idMunicipality_Customer )
         .subscribe( ok => {
           Swal.fire({
-                      position: 'top-end',
                       icon: 'success',
                       title: 'Se guardo el cliente con exito',
                       showConfirmButton: false,
                       timer: 1500
                     });
-                    this.router.navigateByUrl('auth/catalogoCliente');
+                    this.router.navigateByUrl('/catalogoCliente');
         },(error)=>{
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Verifica que tus campos cumplan no esten vacios y cumplan con el ejemplo solicitado'
+            text: error
           })
         });
   
