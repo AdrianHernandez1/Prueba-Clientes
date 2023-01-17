@@ -25,12 +25,12 @@ export class LoginComponent {
   login() {
     const { user, password } = this.miFormulario.value;
     this.authService.login( user, password )
-      .subscribe( ok => {          
-        if ( ok === true ) {
+      .subscribe( idRole => {          
+        if ( idRole === 1 || idRole===2 ) {
           this.router.navigateByUrl('/catalogoCliente');
           sessionStorage.setItem('usuario', user);
         } else {
-          Swal.fire('Error', ok, 'error');
+          Swal.fire('Error', 'Verifica el usuario o contraseña', 'error');
 
   }});
 }

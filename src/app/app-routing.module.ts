@@ -9,6 +9,7 @@ import { DetalleUComponent } from './auth/pages/usuario/detalle-u/detalle-u.comp
 import { LoginComponent } from './auth/pages/login/login.component';
 import { DetalleUEditarEliminarComponent } from './auth/pages/usuario/detalle-u-editar-eliminar/detalle-u-editar-eliminar.component';
 import { RedireccionComponent } from './auth/pages/redireccion/redireccion.component';
+import { BitacoraLoginComponent } from './auth/pages/bitacora-login/bitacora-login.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'editarUsuario/:idUser',
     component: DetalleUEditarEliminarComponent
+  },
+  {
+    path: 'bitacoraLogin',
+    component: BitacoraLoginComponent
   },
   {
     path: '**',

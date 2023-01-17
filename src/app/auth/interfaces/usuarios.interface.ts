@@ -13,4 +13,5 @@ export interface User {
     status:      boolean;
     role:        string;
     idRole_User: number; 
+    idRole:      number;
 }

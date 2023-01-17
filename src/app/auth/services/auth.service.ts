@@ -5,7 +5,7 @@ import { catchError, map, Observable, of, tap } from 'rxjs';
 import { InterfazEstados } from '../interfaces/estados.interfaces';
 import { InterfazCliente, Customer } from '../interfaces/interfaces';
 import { InterfazMunicipios } from '../interfaces/municipio.interfaces';
-import { InterfazLogin } from '../interfaces/login.interface';
+import { InterfazLogin, Login } from '../interfaces/login.interface';
 import { InterfazUsuario, User } from '../interfaces/usuarios.interface';
 import { InterfazBitacora } from '../interfaces/bitacora.interfaces';
 
@@ -92,11 +92,11 @@ export class AuthService {
     return this.http.post<InterfazLogin>(url, body)
       .pipe(
         tap(resp => {
-          if (resp.ok) {
+          if (resp.idRole) {
             sessionStorage.setItem('token', resp.token!);
           }
         }),
-        map(resp => resp.ok),
+        map(resp => resp.idRole),
         catchError(err => of(err.error.msg))
       );
   }
@@ -163,4 +163,10 @@ export class AuthService {
     const url = `${this.baseUrl}/api/registros/search?query=${termino}&token=${this.token}`;
     return this.http.get<InterfazBitacora>(url);
   }
+
+    //Listado de usuario
+    getAllLogin(): Observable<Login> {
+      const url = `${this.baseUrl}/api/registros/login?token=${this.token}`;
+      return this.http.get<Login>(url);
+    }
 }

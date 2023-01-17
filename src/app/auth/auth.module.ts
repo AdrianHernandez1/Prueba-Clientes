@@ -15,6 +15,7 @@ import { CatalogoUComponent } from './pages/usuario/catalogo-u/catalogo-u.compon
 import { DetalleUComponent } from './pages/usuario/detalle-u/detalle-u.component';
 import { DetalleUEditarEliminarComponent } from './pages/usuario/detalle-u-editar-eliminar/detalle-u-editar-eliminar.component';
 import { RedireccionComponent } from './pages/redireccion/redireccion.component';
+import { BitacoraLoginComponent } from './pages/bitacora-login/bitacora-login.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { RedireccionComponent } from './pages/redireccion/redireccion.component'
     CatalogoUComponent,
     DetalleUComponent,
     DetalleUEditarEliminarComponent,
-    RedireccionComponent  ],
+    RedireccionComponent,
+    BitacoraLoginComponent  ],
   imports: [
     CommonModule,
     AuthRoutingModule,

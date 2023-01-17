@@ -11,24 +11,26 @@
         </span> <br><br> <br>
     </div>
     <div class="col-12">
-        <div class="alert alert-danger" value="" *ngIf="bitacoraDatos.resutls.length==0 && dato.length>0">
+        <div class="alert alert-danger" value="" *ngIf="loginDatos.resutls.length==0 && dato.length>0">
             No se encontro nada con el termino {{dato}}
         </div>
         <div class="text-layout">
-            <button pButton type="button" class="p-button-sm p-button-warning" routerLink="/bitacoraLogin" ><i
-                    class="pi pi-users"></i>&nbsp;Información de inicio de sesión</button>
+            <button pButton type="button" class="p-button-sm p-button-warning" routerLink="/bitacora" ><i
+                    class="pi pi-arrow-left"></i>&nbsp;Regresar a bitacora</button>
         </div>
         <br>
         <p-toolbar>
             <div class="p-toolbar-group-left">
-                <span><b>Tabla de movimientos del sistema </b></span>
+                <span><b>Tabla de inicio de sesión del sistema </b></span>
             </div>
             <div class="p-toolbar-group-right">
+                <button pButton type="button" class="p-button-sm p-button-danger" (click)="imprimirLista()"><i
+                    class="pi pi-file-pdf"></i>&nbsp;Exportar a PDF</button>&nbsp;   
             <button pButton type="button" class="p-button-sm p-button-success" (click)="exportarExcel()"><i
                     class="pi pi-file-excel"></i>&nbsp;Exportar a Excel</button>
             </div>
         </p-toolbar>
-        <div class="gid" *ngIf="bitacoraDatos.resutls.length>0">
+        <div class="gid" *ngIf="loginDatos.resutls.length>0">
             <div class="p-col mt-2" #datoTabla id="datoTabla">
                 <table class="table table-hover">
                     <thead>
@@ -37,16 +39,14 @@
                             <th>Usuario</th>
                             <th>Descripcción </th>
                             <th>Fecha</th>
-                            <th>Acción realizada </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of bitacoraDatos.resutls" >
+                        <tr *ngFor="let item of loginDatos.resutls" >
                             <td>{{item.idLog}}</td>
                             <td>{{item.user_name}}</td>
                             <td>{{item.description}}</td>
                             <td>{{item.date}}</td>
-                            <td>{{item.action}}</td>
                         </tr>
                     </tbody>
                 </table>
