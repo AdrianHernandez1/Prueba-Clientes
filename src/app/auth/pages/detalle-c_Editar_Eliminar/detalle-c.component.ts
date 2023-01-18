@@ -8,6 +8,7 @@ import { InterfazEstados } from '../../interfaces/estados.interfaces';
 import { Customer, InterfazCliente } from '../../interfaces/interfaces';
 import { switchMap } from 'rxjs';
 import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
+import { Coordenadas } from '../../interfaces/coordenadas.interface';
 
 @Component({
   selector: 'app-detalle-c, ',
@@ -23,14 +24,17 @@ import { InterfazMunicipios } from '../../interfaces/municipio.interfaces';
   ]
 })
 export class DetalleCComponent implements AfterViewInit, OnInit  {
-  
-  @Input() lngLat: [number, number] = [-101.68337786078459,21.1213454578527];;
+  latitud:number=Number(sessionStorage.getItem('latitud'));
+  longitud:number=Number(sessionStorage.getItem('longitud'));
+  @Input() lngLat: [number, number] = [this.longitud,this.latitud];
   @ViewChild('mapa') divMapa!: ElementRef;
   @Input() estados!: InterfazEstados[] ;
   tipoSeleccionado: number = 0;
   customer!:Customer;
   estadosDatos!:InterfazEstados;
   municipiosDatos!: InterfazMunicipios;
+  coordenas!:Coordenadas;
+
   
   constructor(private router: Router,
     private fb: FormBuilder,
@@ -117,4 +121,16 @@ this.authService.getAllEstados()
       timer: 1500
     });
   }
+
+  getAllCoordenadas(cliente:Customer){
+    this.authService.getAllCoordenadas(cliente)
+    .subscribe((coordenadas) => {
+      this.coordenas = coordenadas;
+    }, (error) => {
+      console.log(error);
+      }
+    )
+  }
+
+
 }

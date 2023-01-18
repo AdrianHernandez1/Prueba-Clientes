@@ -54,7 +54,6 @@ const routes: Routes = [
     path: 'editarCliente/:idCustomer',
     component: DetalleCComponent
   },
-  
   {
     path: 'editarUsuario/:idUser',
     component: DetalleUEditarEliminarComponent

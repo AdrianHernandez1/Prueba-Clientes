@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import *as XLSX from 'xlsx';
 import html2canvas from 'html2canvas';
-import { windowTime } from 'rxjs';
+import { Coordenadas } from '../../interfaces/coordenadas.interface';
 
 
 @Component({
@@ -28,12 +28,14 @@ import { windowTime } from 'rxjs';
     `
   ]
 })
-export class CatalogoCComponent implements AfterViewInit, OnInit {
-  
-  @Input() lngLat: [number, number] = [-101.68337786078459, 21.1213454578527];
+export class CatalogoCComponent implements AfterViewInit, OnInit{
+  latitud:number=Number(sessionStorage.getItem('latitud'));
+  longitud:number=Number(sessionStorage.getItem('longitud'));
+  @Input() lngLat: [number, number] = [this.longitud,this.latitud];
   @ViewChild('mapa') divMapa!: ElementRef;
   @ViewChild('datoTabla', { static: false }) el!: ElementRef;
   clientesDatos!: InterfazCliente;
+  coordenas!:Coordenadas;
   hayError: boolean = false;
   excel = 'DatosClientes.xlsx';
   termino: String = "";
@@ -48,8 +50,6 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
       zoom: 15
     }
     );
-
-
     new mapboxgl.Marker()
       .setLngLat(this.lngLat)
       .addTo(mapa);
@@ -61,12 +61,12 @@ export class CatalogoCComponent implements AfterViewInit, OnInit {
   ) {
 
   }
-  usuario:any;
-nombre=sessionStorage.getItem("usuario");
+  usuario: any;
+  nombre = sessionStorage.getItem("usuario");
+
   ngOnInit() {
     this.getAllClientes();
     this.buscar();
-    
   }
 
   getAllClientes() {
@@ -78,7 +78,7 @@ nombre=sessionStorage.getItem("usuario");
         window.location.reload();
       }
       )
-      
+
   }
 
   borrarCliente(cliente: Customer) {
@@ -119,27 +119,27 @@ nombre=sessionStorage.getItem("usuario");
 
 
   imprimirLista() {
-   const DATA: any = document.getElementById('datoTabla');
-   const doc = new jsPDF('p', 'pt', 'a4');
-   const options = {
-     background: 'white',
-     scale: 3
-   };
-   html2canvas(DATA, options).then((canvas) => {
+    const DATA: any = document.getElementById('datoTabla');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
 
-     const img = canvas.toDataURL('image/PNG');
+      const img = canvas.toDataURL('image/PNG');
 
-     const bufferX = 15;
-     const bufferY = 15;
-     const imgProps = (doc as any).getImageProperties(img);
-     const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-     doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-     return doc;
-   }).then((docResult) => {
-     docResult.save(`Datos de Cliente.pdf`);
-   });
- 
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`Datos de Cliente.pdf`);
+    });
+
   }
 
   exportarExcel(): void {
@@ -157,12 +157,29 @@ nombre=sessionStorage.getItem("usuario");
       showConfirmButton: false,
       timer: 1500
     });
-    
-
   }
-  
 
+getAllCoordenadas(cliente:Customer){
+  this.authService.getAllCoordenadas(cliente)
+  .subscribe((coordenadas) => {
+    this.coordenas = coordenadas;
+    window.location.reload();
+  }, (error) => {
+    console.log(error);
+    }
+  )
+}
 
+getAllCoordenadasCatalogo(cliente:Customer){
+  this.authService.getAllCoordenadas(cliente)
+  .subscribe((coordenadas) => {
+    this.coordenas = coordenadas;
+    window.location.reload();
+  }, (error) => {
+    console.log(error);
+    }
+  )
+}
 }
 
 

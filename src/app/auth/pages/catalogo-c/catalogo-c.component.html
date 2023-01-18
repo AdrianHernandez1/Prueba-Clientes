@@ -49,10 +49,10 @@
                             <td>{{item.email}}</td>
                             <td>{{item.street|  titlecase}}</td>
                             <td>
-                                <button pButton pRipple type="button" (click)="Buscar()" icon="pi pi-search"
+                                <button pButton pRipple type="button" (click)="getAllCoordenadasCatalogo(item)" icon="pi pi-search"
                                     class="p-button-rounded p-button-success p-button-outlined "
                                     style='width:25px; height:25px'></button>
-                                <button pButton [routerLink]="['/editarCliente',item.idCustomer]" pRipple type="button"
+                                <button pButton [routerLink]="['/editarCliente',item.idCustomer]" (click)="getAllCoordenadas(item)" pRipple type="button"
                                     icon="pi pi-file-edit" class="p-button-rounded p-button-warning p-button-outlined"
                                     style='width:25px; height:25px'></button>
                                 <button pButton (click)="borrarCliente(item)" pRipple type="button" icon="pi pi-times"
@@ -69,6 +69,6 @@
         <div class="mapa" #mapa>
         </div>
     </div>
-
 </div>
+
 

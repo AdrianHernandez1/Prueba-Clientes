@@ -8,6 +8,7 @@ import { InterfazMunicipios } from '../interfaces/municipio.interfaces';
 import { InterfazLogin, Login } from '../interfaces/login.interface';
 import { InterfazUsuario, User } from '../interfaces/usuarios.interface';
 import { InterfazBitacora } from '../interfaces/bitacora.interfaces';
+import { Coordenadas } from '../interfaces/coordenadas.interface';
 
 
 @Injectable({
@@ -164,9 +165,21 @@ export class AuthService {
     return this.http.get<InterfazBitacora>(url);
   }
 
-    //Listado de usuario
-    getAllLogin(): Observable<Login> {
+  //Listado de usuario
+  getAllLogin(): Observable<Login> {
       const url = `${this.baseUrl}/api/registros/login?token=${this.token}`;
       return this.http.get<Login>(url);
-    }
+  }
+
+  //Coordenadas
+  getAllCoordenadas(cliente:Customer): Observable<Coordenadas> {
+    const url = `${this.baseUrl}/api/coordenadas?colonia=${cliente.housing}&calle=${cliente.street}&CP=${cliente.postal_code}&token=${this.token}`;
+    return this.http.get<Coordenadas>(url)
+    .pipe(
+      tap(res=>{
+        sessionStorage.setItem('latitud',String(res.lat));
+        sessionStorage.setItem('longitud',String(res.lng));
+      })
+    )
+}
 }
